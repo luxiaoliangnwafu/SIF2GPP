@@ -1,5 +1,5 @@
 clc;clear;
-load RSE_dataset.mat
+load RSE_submit.mat
 %% GPP calculation
 
 R2_KDF = [];
@@ -226,7 +226,8 @@ for jj = 1:size (KDF_VALUES,1)
         KF = 1/(KDF+1);
         KD = 1-KF;
         
-        phiF0_psii=0.02;
+        %phiF0_psii=0.02;
+        phiF0_psii=KF./(1+4);
         phiF_psii =(KF./(KF+KD+KNPQ)).*(1-YII);
         epsilon = phiF_psii./phiF0_psii;
         NPQ = KNPQ;
@@ -374,7 +375,7 @@ g2 =plot(x_input2,y_input2,'--','LineWidth',3,...
     'MarkerEdgeColor','#D95319',...
     'MarkerFaceColor','#D95319');
 xlim([9 19])
-ylim([5 10])
+%ylim([5 10])
 xlabel(['K_D_F'],'Color','k')
 ylabel(['RMSE  GPP_E_C - GPP_S_I_F'])
 
